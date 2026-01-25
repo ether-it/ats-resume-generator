@@ -1,0 +1,22 @@
+.logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    transition: width 0.2s, height 0.2s;
+}
+
+/* Tablet (e.g., iPad Portrait and up) */
+@media (min-width: 768px) {
+    .logo {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Desktop (e.g., standard laptops and up) */
+@media (min-width: 1024px) {
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+}

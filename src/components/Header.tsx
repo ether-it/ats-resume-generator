@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FunctionComponent } from 'react';
 import Image from 'next/image';
+import styles from './Header.module.css';
 
 export const Header: FunctionComponent = () => {
     return (
@@ -10,9 +11,9 @@ export const Header: FunctionComponent = () => {
                     <Image
                         src="/logo.png"
                         alt="ATSReadyResume"
-                        width={32}
-                        height={32}
-                        style={{ height: '32px', width: '32px', objectFit: 'contain' }}
+                        width={40}
+                        height={40}
+                        className={styles.logo}
                         priority
                     />
                 </Link>
