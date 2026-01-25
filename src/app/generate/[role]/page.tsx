@@ -12,8 +12,8 @@ export async function generateMetadata({ params }: PageProps) {
     const role = await getRoleBySlug(params.role);
     if (!role) return {};
     return {
-        title: `Join Early Access - ${role.name} Resume Generator`,
-        description: `We're building the ultimate ATS-ready resume generator for ${role.name}s. Join the waitlist.`
+        title: `Join Early Access - ${role.name} Resume System`,
+        description: `We're building the ultimate ATS-ready resume system for ${role.name}s. Join the waitlist.`
     }
 }
 
@@ -41,9 +41,9 @@ export default async function GeneratePage({ params }: PageProps) {
                     }}>
                         Coming Soon
                     </span>
-                    <h1 style={{ marginBottom: '1rem', fontSize: '2.5rem' }}>We're preparing this resume generator</h1>
+                    <h1 style={{ marginBottom: '1rem', fontSize: '2.5rem' }}>We’re preparing this ATS resume system</h1>
                     <p style={{ color: 'hsl(var(--muted-foreground))', marginBottom: '3rem', fontSize: '1.125rem' }}>
-                        We're currently rolling this out for <strong>{role.name}s</strong>. Join early access to be notified when it's ready.
+                        We are rolling this out role-by-role to maintain ATS accuracy, zero hallucination risk, and consistent output quality.
                     </p>
 
                     <div style={{ textAlign: 'left' }}>

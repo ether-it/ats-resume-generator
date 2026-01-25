@@ -36,7 +36,7 @@ export const WhoItsForSection: FunctionComponent<WhoItsForSectionProps> = ({ rol
                                     <span style={{ color: 'red' }}>×</span> Users who want exaggerated experience
                                 </li>
                                 <li style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                    <span style={{ color: 'red' }}>×</span> People looking for a generic bio-generator
+                                    <span style={{ color: 'red' }}>×</span> People looking for a generic resume builder
                                 </li>
                             </ul>
                         </div>

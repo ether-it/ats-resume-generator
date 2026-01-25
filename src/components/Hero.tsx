@@ -42,11 +42,19 @@ export const Hero: FunctionComponent<HeroProps> = ({ headline, subheadline, role
                         fontWeight: 600
                     }}
                 >
-                    Generate My Resume
+                    Build ATS-Optimized Resume
                 </Link>
-                <p style={{ marginTop: '1rem', fontSize: '0.875rem', color: 'hsl(var(--muted-foreground))' }}>
-                    Free early access &nbsp;•&nbsp; No credit card required
-                </p>
+
+                <div style={{ marginTop: '4rem', textAlign: 'left', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
+                    <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'hsl(var(--header-color))', textAlign: 'center' }}>Why ATSReadyResume Is Different</h3>
+                    <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', color: 'hsl(var(--muted-foreground))', lineHeight: '1.8' }}>
+                        <li>Fixed ATS-approved layout (non-editable by design)</li>
+                        <li>No hallucinated experience, metrics, or skills</li>
+                        <li>Role-specific keyword intelligence</li>
+                        <li>Predictable, repeatable output quality</li>
+                        <li>Built for shortlisting, not visual creativity</li>
+                    </ul>
+                </div>
             </div>
         </section>
     );
