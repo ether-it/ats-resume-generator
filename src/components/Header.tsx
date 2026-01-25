@@ -19,13 +19,12 @@ export const Header: FunctionComponent = () => {
                         />
                         <div className={styles.brandTextColumn}>
                             <span className={styles.brandName}>ATSReadyResume</span>
-                            <span className={styles.slogan}>ATS Resume Engineering</span>
-                            <span className={styles.microCopy}>Fixed structure. Zero AI variability. Recruiter-safe.</span>
+                            <span className={styles.slogan}>Fixed ATS structure. Zero AI variability. Recruiter-safe by design.</span>
                         </div>
                     </Link>
 
                     <div className={styles.trustSignal}>
-                        Fixed ATS-safe standard
+                        FIXED ATS-SAFE STANDARD
                     </div>
                 </div>
             </div>
