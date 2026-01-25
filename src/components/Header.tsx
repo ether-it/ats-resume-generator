@@ -9,7 +9,7 @@ export const Header: FunctionComponent = () => {
             <div className="container" style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
                 <Link href="/" className={styles.brandLink}>
                     <Image
-                        src="/logo.png"
+                        src="/logo-mark.png"
                         alt="ATSReadyResume"
                         width={64}
                         height={64}
