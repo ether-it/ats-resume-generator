@@ -11,8 +11,8 @@ export const Header: FunctionComponent = () => {
                     <Image
                         src="/logo.png"
                         alt="ATSReadyResume"
-                        width={44}
-                        height={44}
+                        width={52}
+                        height={52}
                         className={styles.logo}
                         priority
                     />
