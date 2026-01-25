@@ -5,19 +5,26 @@ import styles from './Header.module.css';
 
 export const Header: FunctionComponent = () => {
     return (
-        <header style={{ borderBottom: '1px solid hsl(var(--border))', padding: '1.5rem 0' }}>
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
+        <header className={styles.header}>
+            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
+                <Link href="/" className={styles.brandLink}>
                     <Image
                         src="/logo.png"
                         alt="ATSReadyResume"
-                        width={40}
-                        height={40}
+                        width={44}
+                        height={44}
                         className={styles.logo}
                         priority
                     />
+                    <div className={styles.brandTextColumn}>
+                        <span className={styles.brandName}>ATSReadyResume</span>
+                        <span className={styles.slogan}>ATS Resume Engineering — Fixed. Predictable. Recruiter-Approved.</span>
+                    </div>
                 </Link>
-                {/* Placeholder for future nav */}
+
+                <div className={styles.trustSignal}>
+                    Fixed ATS-safe structure
+                </div>
             </div>
         </header>
     );
