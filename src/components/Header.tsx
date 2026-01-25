@@ -6,13 +6,13 @@ import styles from './Header.module.css';
 export const Header: FunctionComponent = () => {
     return (
         <header className={styles.header}>
-            <div className="container" style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
                 <Link href="/" className={styles.brandLink}>
                     <Image
                         src="/logo-mark.png"
                         alt="ATSReadyResume"
-                        width={72}
-                        height={72}
+                        width={48}
+                        height={48}
                         className={styles.logo}
                         priority
                     />
@@ -21,6 +21,10 @@ export const Header: FunctionComponent = () => {
                         <span className={styles.slogan}>ATS Resume Engineering</span>
                     </div>
                 </Link>
+
+                <div className={styles.trustSignal}>
+                    Fixed ATS-safe structure
+                </div>
             </div>
         </header>
     );
