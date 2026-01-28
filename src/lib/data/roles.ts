@@ -11,10 +11,10 @@ export interface Role {
 export const roles: Role[] = [
   {
     slug: 'business-analyst',
-    name: 'Business Analyst',
-    seo_title: 'ATS-Ready Business Analyst Resume System | Word Format',
-    seo_description: 'Build an ATS-ready Business Analyst resume in Word format. Built for ATS screening systems, not templates or design-heavy builders.',
-    hero_h1: 'ATS-Engineered Business Analyst Resume',
+    name: 'Senior Business Analyst',
+    seo_title: 'ATS-Ready Senior Business Analyst Resume System | Word Format',
+    seo_description: 'Build an ATS-ready Senior Business Analyst resume in Word format. Built for ATS screening systems, not templates or design-heavy builders.',
+    hero_h1: 'ATS-Engineered Senior Business Analyst Resume',
     hero_subheadline: 'Enter your real experience. We engineer it into a fixed ATS-safe resume — no templates, no design changes, no invented content.',
     status: 'active',
   },

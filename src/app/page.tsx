@@ -39,7 +39,7 @@ export default async function Home() {
 
             <main style={{ flex: 1 }}>
                 <Hero
-                    headline="ATS-Optimized Resume Generator"
+                    headline="ATS-Optimized Senior Business Analyst Resume – Instant Download"
                     subheadline="Build a recruiter-safe, engineering-grade resume found by algorithms. Fixed structure. Zero hallucination."
                     roleSlug={primaryRole.slug}
                 />

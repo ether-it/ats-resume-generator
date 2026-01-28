@@ -23,14 +23,12 @@ export default function ResumeForm({ roleSlug }: { roleSlug: string }) {
         resolver: zodResolver(resumeSchema),
         defaultValues: {
             skills: ['', '', ''],
-            experience: [{ role: '', company: '', dates: '', bullets: [''] }],
-            projects: [{ client: '', dates: '', bullets: [''] }]
+            experience: [{ role: '', company: '', dates: '', bullets: [''] }]
         }
     });
 
     const { fields: expFields, append: appendExp, remove: removeExp } = useFieldArray({ control, name: 'experience' });
     const { fields: skillFields, append: appendSkill, remove: removeSkill } = useFieldArray({ control, name: 'skills' as any }); // Typescript quirk with array of strings
-    const { fields: projFields, append: appendProj, remove: removeProj } = useFieldArray({ control, name: 'projects' });
 
     const totalSteps = 5;
 
@@ -39,7 +37,7 @@ export default function ResumeForm({ roleSlug }: { roleSlug: string }) {
         if (step === 1) isValid = await trigger('personal');
         if (step === 2) isValid = await trigger('summary'); // Summary is simple string
         if (step === 3) isValid = await trigger('experience');
-        if (step === 4) isValid = await trigger(['skills', 'education', 'projects']);
+        if (step === 4) isValid = await trigger(['skills', 'education']);
 
         if (isValid) setStep(s => s + 1);
     };
@@ -240,23 +238,6 @@ export default function ResumeForm({ roleSlug }: { roleSlug: string }) {
                                 ))}
                             </div>
                             {errors.skills && <p className="text-red-500 text-sm">{errors.skills.message}</p>}
-                        </div>
-
-                        <div className="space-y-4 mt-8">
-                            <div className="flex justify-between">
-                                <label className="font-semibold block">Projects (Optional)</label>
-                                <button type="button" onClick={() => appendProj({ client: '', dates: '', bullets: [''] })} className="text-xs text-blue-600">+ Add Project</button>
-                            </div>
-                            {projFields.map((field, index) => (
-                                <div key={field.id} className="p-4 border rounded relative">
-                                    <button type="button" onClick={() => removeProj(index)} className="absolute top-2 right-2 text-slate-400"><Trash2 className="w-4 h-4" /></button>
-                                    <div className="grid gap-2 mb-2">
-                                        <input {...register(`projects.${index}.client`)} placeholder="Project Name / Client" className="p-2 border rounded" />
-                                        <input {...register(`projects.${index}.dates`)} placeholder="Dates" className="p-2 border rounded" />
-                                    </div>
-                                    <textarea {...register(`projects.${index}.bullets.0`)} placeholder="Details..." className="w-full p-2 border rounded h-20" />
-                                </div>
-                            ))}
                         </div>
                     </div>
                 )}

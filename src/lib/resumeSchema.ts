@@ -15,11 +15,6 @@ export const resumeSchema = z.object({
         dates: z.string().min(2, "Dates are required"),
         bullets: z.array(z.string()).min(1, "Add at least one achievement bullet"),
     })).min(1, "Add at least one experience entry"),
-    projects: z.array(z.object({
-        client: z.string().min(2, "Client/Project Name is required"),
-        dates: z.string().min(2, "Dates are required"),
-        bullets: z.array(z.string()).min(1, "Add at least one detail bullet"),
-    })).optional(),
     education: z.string().min(5, "Education details are required"),
 });
 
