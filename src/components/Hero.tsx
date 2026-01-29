@@ -33,7 +33,7 @@ export const Hero: FunctionComponent<HeroProps> = ({ headline, subheadline, role
                     {subheadline}
                 </p>
                 <Link
-                    href={`/generate/${roleSlug}`}
+                    href={`/resume/${roleSlug}`}
                     className="btn btn-primary"
                     style={{
                         fontSize: '1.25rem',

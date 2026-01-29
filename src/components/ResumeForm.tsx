@@ -13,6 +13,7 @@ export default function ResumeForm({ roleSlug }: { roleSlug: string }) {
     const [step, setStep] = useState(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [result, setResult] = useState<{ success: boolean; fileUrl?: string; error?: string } | null>(null);
+    const [isMobilePreviewOpen, setIsMobilePreviewOpen] = useState(false);
 
     const {
         register,
@@ -113,6 +114,42 @@ export default function ResumeForm({ roleSlug }: { roleSlug: string }) {
                             style={{ width: `${(step / totalSteps) * 100}%` }}
                         />
                     </div>
+                </div>
+
+                {/* MOBILE PREVIEW COLLAPSIBLE */}
+                <div className="lg:hidden mb-8 border border-slate-200 rounded-lg overflow-hidden">
+                    <button
+                        type="button"
+                        onClick={() => setIsMobilePreviewOpen(!isMobilePreviewOpen)}
+                        className="w-full flex items-center justify-between p-4 bg-slate-50 hover:bg-slate-100 transition-colors text-left"
+                    >
+                        <div className="flex items-center text-slate-700 font-semibold text-sm">
+                            <Lock className="w-4 h-4 mr-2" />
+                            View Sample Output (Locked)
+                        </div>
+                        {isMobilePreviewOpen ? (
+                            <ChevronLeft className="w-4 h-4 rotate-90 transition-transform" />
+                        ) : (
+                            <ChevronRight className="w-4 h-4 rotate-90 transition-transform" />
+                        )}
+                    </button>
+
+                    {isMobilePreviewOpen && (
+                        <div className="bg-slate-100 p-4 border-t border-slate-200 animate-in slide-in-from-top-2">
+                            <div className="relative aspect-[8.5/11] w-full bg-white shadow-sm border border-slate-200">
+                                <Image
+                                    src="/template-preview.png"
+                                    alt="ATS-Safe Resume Template Preview"
+                                    fill
+                                    className="object-contain"
+                                />
+                                <div className="absolute inset-0 bg-slate-900/5 pointer-events-none" />
+                            </div>
+                            <p className="text-xs text-center text-slate-500 mt-2">
+                                "This format is fixed to ensure ATS compatibility. Only content changes."
+                            </p>
+                        </div>
+                    )}
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 min-h-[400px]">

@@ -1,60 +1,83 @@
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
-import { getRoleBySlug, getAllRoles } from '@/lib/data/roles';
+import { getRoleBySlug } from '@/lib/data/roles';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Hero } from '@/components/Hero';
-import { ProblemSection } from '@/components/ProblemSection';
-import { SolutionSection } from '@/components/SolutionSection';
-import { HowItWorksSection } from '@/components/HowItWorksSection';
-import { WhoItsForSection } from '@/components/WhoItsForSection';
+import EarlyAccessForm from '@/components/EarlyAccessForm';
+import ResumeForm from '@/components/ResumeForm';
 
 interface PageProps {
     params: { role: string };
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps) {
     const role = await getRoleBySlug(params.role);
     if (!role) return {};
 
+    if (role.status === 'active') {
+        return {
+            title: `Build ${role.name} Resume | ATSReadyResume`,
+            description: `Generate an ATS-optimized ${role.name} resume instantly.`
+        };
+    }
+
     return {
-        title: role.seo_title,
-        description: role.seo_description,
-        openGraph: {
-            title: role.seo_title,
-            description: role.seo_description,
-        },
-    };
+        title: `Join Early Access - ${role.name} Resume System`,
+        description: `We're building the ultimate ATS-ready resume system for ${role.name}s. Join the waitlist.`
+    }
 }
 
-export async function generateStaticParams() {
-    const roles = await getAllRoles();
-    return roles.map((role) => ({
-        role: role.slug,
-    }));
-}
-
-export default async function ResumeLandingPage({ params }: PageProps) {
+export default async function GeneratePage({ params }: PageProps) {
     const role = await getRoleBySlug(params.role);
 
     if (!role) {
         notFound();
     }
 
+    const isActive = role.status === 'active';
+
     return (
         <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
             <Header />
-            <main>
-                <Hero
-                    headline={role.hero_h1}
-                    subheadline={role.hero_subheadline}
-                    roleSlug={role.slug}
-                />
-                <ProblemSection roleName={role.name} />
-                <SolutionSection roleName={role.name} />
-                <HowItWorksSection roleName={role.name} roleSlug={role.slug} />
-                <WhoItsForSection roleName={role.name} />
-            </main>
+            <div className="flex-1 bg-slate-50">
+                <main className="container section">
+                    {isActive ? (
+                        <>
+                            <div className="text-center mb-10">
+                                <h1 className="text-3xl font-bold mb-4">Build Your {role.name} Resume</h1>
+                                <p className="text-muted-foreground max-w-2xl mx-auto">
+                                    Fill in your details below. We will strictly format them into a recruiter-safe, parseable document.
+                                </p>
+                            </div>
+                            <div className="bg-white p-6 md:p-10 rounded-xl shadow-sm border">
+                                <ResumeForm roleSlug={role.slug} />
+                            </div>
+                        </>
+                    ) : (
+                        <div style={{ maxWidth: '500px', width: '100%', margin: '0 auto', textAlign: 'center', padding: '4rem 0' }}>
+                            <span style={{
+                                background: 'hsl(var(--secondary))',
+                                color: 'hsl(var(--secondary-foreground))',
+                                padding: '0.25rem 0.75rem',
+                                borderRadius: '9999px',
+                                fontSize: '0.875rem',
+                                fontWeight: 600,
+                                display: 'inline-block',
+                                marginBottom: '1.5rem'
+                            }}>
+                                Coming Soon
+                            </span>
+                            <h1 style={{ marginBottom: '1rem', fontSize: '2.5rem' }}>We’re preparing this ATS resume system</h1>
+                            <p style={{ color: 'hsl(var(--muted-foreground))', marginBottom: '3rem', fontSize: '1.125rem' }}>
+                                We are rolling this out role-by-role to maintain ATS accuracy, zero hallucination risk, and consistent output quality.
+                            </p>
+
+                            <div style={{ textAlign: 'left' }}>
+                                <EarlyAccessForm roleSlug={role.slug} />
+                            </div>
+                        </div>
+                    )}
+                </main>
+            </div>
             <Footer />
         </div>
     );
